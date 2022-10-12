@@ -3,6 +3,7 @@ import {
   insertCompnay,
   getAllCompany,
 } from "../repository/company";
+import { getAllCustomersWithSub } from "../repository/customer";
 
 export const createCompany = async (data) => {
   const company = await findCompany({ email: data.email });
@@ -20,8 +21,8 @@ export const retrieveAllCompany = async (data) => {
 
 export const getCompanyDetails = async (company_id) => {
   const result = await findCompany({ _id: company_id });
-  
-  if (result) {
+  console.log(result);
+  if (!result) {
     return {
       status: 400,
       message: "This comapany details doesn't exist ",
@@ -32,4 +33,8 @@ export const getCompanyDetails = async (company_id) => {
     data: result,
     message: "Company details retrieved successfully",
   };
+};
+
+export const retrieveAllCompanywithSub = async (data) => {
+  return getAllCustomersWithSub(data);
 };

@@ -5,6 +5,7 @@ import {
   createCompany,
   retrieveAllCompany,
   getCompanyDetails,
+  retrieveAllCompanywithSub
 } from "../services/company";
 import { makeResponse } from "../utils/response";
 
@@ -177,12 +178,25 @@ const deleteCompany = async (req, res) => {
   return res.status(200).json({ company });
 };
 
+//Get All Customers with SUbscribed Companies
+export const getAllCompanySub = asyncHandler(async (req, res) => {
+  const data = await retrieveAllCompanywithSub(req.query.page, req.query.limit);
+  return makeResponse({
+    res,
+    data,
+    message: "Companies retrieved successfully",
+  });
+});
+
+
+
 module.exports = {
   addCompany,
   getAllCompany,
   getCompanyById,
   updateCompany,
   deleteCompany,
+  getAllCompanySub
 };
 
 // name

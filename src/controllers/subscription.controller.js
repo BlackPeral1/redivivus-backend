@@ -9,3 +9,13 @@ export const subscribe = asyncHandler(async (req, res) => {
     if (result.status) return makeResponse({ res, ...result })
     return makeResponse({ res, status: 200, data: result, message: 'Subscribed company' })
 })
+
+export const getAllCompany = asyncHandler(async (req, res) => {
+    const data = await retrieveAllCompany(req.query.page, req.query.limit);
+    return makeResponse({
+      res,
+      data,
+      message: "Companies retrieved successfully",
+    });
+  });
+  

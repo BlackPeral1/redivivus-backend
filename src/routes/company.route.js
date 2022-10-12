@@ -6,6 +6,7 @@ import {
   getCompanyById,
   updateCompany,
   deleteCompany,
+  getAllCompanySub
 } from "../controllers/company.controller";
 const companyRoute = express.Router();
 
@@ -18,5 +19,7 @@ companyRoute.get("/getcompany/:id", getCompanyById);
 companyRoute.patch("/updatecompany/:id", updateCompany);
 
 companyRoute.delete("/deletecompany/:id", deleteCompany);
+
+companyRoute.get("/getcompanysub",getAllCompanySub );
 
 module.exports = companyRoute;
